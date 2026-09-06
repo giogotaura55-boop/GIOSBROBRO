@@ -1,9 +1,10 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SteakOS</title>
+<title>SteaKOS</title>
 
 <style>
 * {
@@ -12,548 +13,223 @@
     padding: 0;
 }
 
-:root {
-    --bg: #09090d;
-    --panel: #15151c;
-    --panel2: #1c1c25;
-    --border: rgba(255,255,255,.08);
-    --text: #fff;
-    --muted: #999;
-    --accent: #8b5cf6;
-}
-
 body {
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-    font-family: Inter, Arial, sans-serif;
-    color: var(--text);
-    background: var(--bg);
+    font-family: Arial, sans-serif;
+    background: #0b0612;
+    color: white;
+    overflow-x: hidden;
 }
 
-/* =========================
-   ANIMATED BACKGROUND
-========================= */
-
-.background {
-    position: fixed;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.blob {
-    position: absolute;
-    width: 500px;
-    height: 500px;
-    border-radius: 50%;
-    filter: blur(100px);
-    opacity: .18;
-    animation: float 12s infinite alternate ease-in-out;
-}
-
-.blob.one {
-    background: #7c3aed;
-    left: -150px;
-    top: -150px;
-}
-
-.blob.two {
-    background: #06b6d4;
-    right: -180px;
-    top: 20%;
-    animation-delay: -4s;
-}
-
-.blob.three {
-    background: #ec4899;
-    bottom: -250px;
-    left: 35%;
-    animation-delay: -7s;
-}
-
-@keyframes float {
-    from {
-        transform: translate(0,0) scale(1);
-    }
-    to {
-        transform: translate(100px,60px) scale(1.2);
-    }
-}
-
-/* =========================
-   TOP TAB BAR
-========================= */
-
-.browser {
-    height: 64px;
-    background: rgba(15,15,20,.92);
-    backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-
+/* TOP BAR */
+.topbar {
+    height: 48px;
+    background: #160d22;
     display: flex;
-    align-items: flex-end;
-    padding: 0 10px;
-
-    position: relative;
-    z-index: 20;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 10px;
+    border-bottom: 1px solid #352044;
 }
 
-.tabs {
-    display: flex;
-    align-items: flex-end;
-    gap: 5px;
-    height: 100%;
+.logo {
+    font-size: 18px;
+    font-weight: bold;
+    color: #c084fc;
+    padding: 0 12px;
 }
 
 .tab {
-    height: 46px;
-    min-width: 220px;
+    background: #241332;
+    border-radius: 9px;
+    padding: 9px 18px;
+    cursor: pointer;
+    transition: .2s;
+}
 
-    padding: 0 15px;
-
-    border-radius: 12px 12px 0 0;
-
-    background: #202027;
-
-    display: flex;
-    align-items: center;
-    gap: 12px;
-
-    color: #ddd;
-    font-size: 14px;
+.tab:hover {
+    background: #3a1d52;
 }
 
 .tab.active {
-    background: #292932;
+    background: #4c2670;
 }
 
-.favicon {
-    width: 21px;
-    height: 21px;
-    border-radius: 6px;
-
-    background:
-        linear-gradient(135deg,#a855f7,#06b6d4);
-}
-
-.tab-title {
-    flex: 1;
-}
-
-.close {
-    color: #888;
-    cursor: pointer;
-    font-size: 19px;
-}
-
-.close:hover {
-    color: white;
-}
-
-.newtab {
-    width: 40px;
-    height: 40px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 27px;
-    color: #aaa;
-    cursor: pointer;
-
-    margin-left: 4px;
-}
-
-.newtab:hover {
-    background: #292930;
-    border-radius: 50%;
-}
-
-/* =========================
-   TOOLBAR
-========================= */
-
+/* TOOLBAR */
 .toolbar {
-    height: 56px;
-
-    background: rgba(17,17,23,.92);
-    backdrop-filter: blur(20px);
-
-    border-bottom: 1px solid var(--border);
-
+    height: 55px;
+    background: #100918;
     display: flex;
     align-items: center;
-
-    padding: 0 16px;
-    gap: 10px;
+    gap: 8px;
+    padding: 8px 12px;
+    border-bottom: 1px solid #291737;
 }
 
-.tool {
+.toolbtn {
     width: 38px;
     height: 38px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
+    border: 0;
     border-radius: 10px;
-
-    color: #aaa;
-    cursor: pointer;
-    font-size: 18px;
-}
-
-.tool:hover {
-    background: #282831;
+    background: #21122e;
     color: white;
+    font-size: 18px;
+    cursor: pointer;
+    transition: .2s;
 }
 
-/* ADDRESS BAR */
+.toolbtn:hover {
+    background: #69359a;
+    transform: translateY(-1px);
+}
 
 .address {
     flex: 1;
     height: 38px;
-
-    border-radius: 20px;
-
-    background: #202027;
-    border: 1px solid #30303a;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 15px;
-    gap: 10px;
-
-    color: #aaa;
-}
-
-.address input {
-    width: 100%;
-
-    background: none;
-    border: none;
-    outline: none;
-
+    border: 1px solid #3c2250;
+    border-radius: 12px;
+    background: #1b1025;
     color: white;
+    padding: 0 15px;
+    outline: none;
     font-size: 14px;
 }
 
-/* =========================
-   SIDEBAR
-========================= */
+.address:focus {
+    border-color: #a855f7;
+}
 
+/* MAIN */
+.layout {
+    display: flex;
+    min-height: calc(100vh - 103px);
+}
+
+/* SIDEBAR */
 .sidebar {
-    position: absolute;
-
-    left: 0;
-    top: 120px;
-    bottom: 0;
-
-    width: 72px;
-
-    background: rgba(13,13,18,.88);
-    backdrop-filter: blur(20px);
-
-    border-right: 1px solid var(--border);
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    padding-top: 18px;
-    gap: 12px;
-
-    z-index: 10;
+    width: 210px;
+    background: #110919;
+    border-right: 1px solid #2d193b;
+    padding: 18px 12px;
 }
 
-.side-btn {
-    width: 48px;
-    height: 48px;
-
-    border-radius: 14px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    font-size: 20px;
-
-    color: #888;
-
+.sidebtn {
+    width: 100%;
+    border: 0;
+    background: transparent;
+    color: #d8cbe3;
+    padding: 13px;
+    margin-bottom: 6px;
+    border-radius: 10px;
+    text-align: left;
     cursor: pointer;
-
-    transition: .2s;
+    font-size: 15px;
 }
 
-.side-btn:hover,
-.side-btn.active {
-    background: #29232f;
+.sidebtn:hover,
+.sidebtn.active {
+    background: #4a2468;
     color: white;
 }
 
-.side-bottom {
-    margin-top: auto;
-    margin-bottom: 20px;
-}
-
-/* =========================
-   MAIN PAGE
-========================= */
-
-main {
-    position: absolute;
-
-    left: 72px;
-    right: 0;
-
-    top: 120px;
-    bottom: 0;
-
-    overflow-y: auto;
-}
-
-.home {
-    min-height: 100%;
-    padding: 60px 7% 80px;
-}
-
-/* =========================
-   HERO
-========================= */
-
-.hero {
-    text-align: center;
-    max-width: 850px;
+/* CONTENT */
+.content {
+    flex: 1;
+    padding: 35px;
+    max-width: 1400px;
     margin: auto;
+    width: 100%;
 }
 
-.badge {
-    display: inline-block;
-
-    padding: 8px 15px;
-
-    border: 1px solid #3a3048;
-    background: #20192b;
-
-    color: #b98cff;
-
-    border-radius: 50px;
-
-    font-size: 12px;
-    font-weight: bold;
-
-    margin-bottom: 20px;
+/* HERO */
+.hero {
+    background: linear-gradient(135deg, #30134c, #68299b);
+    border-radius: 24px;
+    padding: 40px;
+    margin-bottom: 30px;
+    box-shadow: 0 20px 60px rgba(108, 43, 155, .25);
 }
 
 .hero h1 {
-    font-size: clamp(55px,8vw,100px);
-    font-weight: 900;
-
-    letter-spacing: -6px;
-
-    line-height: .9;
-}
-
-.gradient {
-    background: linear-gradient(
-        90deg,
-        #fff,
-        #a78bfa,
-        #22d3ee
-    );
-
-    -webkit-background-clip: text;
-    color: transparent;
+    font-size: 42px;
+    margin-bottom: 10px;
 }
 
 .hero p {
-    color: var(--muted);
-
-    margin-top: 25px;
-
-    font-size: 17px;
+    color: #e5d5f1;
+    margin-bottom: 22px;
 }
 
-/* =========================
-   SEARCH
-========================= */
-
-.search {
-    max-width: 650px;
-    height: 60px;
-
-    margin: 35px auto;
-
-    background: rgba(30,30,38,.9);
-
-    border: 1px solid #383842;
-
-    border-radius: 18px;
-
+.searchbox {
     display: flex;
-    align-items: center;
-
-    padding: 0 20px;
-
-    box-shadow:
-        0 20px 70px rgba(0,0,0,.3);
-
-    transition: .25s;
+    max-width: 700px;
 }
 
-.search:focus-within {
-    border-color: var(--accent);
-    box-shadow:
-        0 0 0 4px rgba(139,92,246,.1),
-        0 20px 70px rgba(0,0,0,.3);
-}
-
-.search span {
-    font-size: 21px;
-    color: #888;
-}
-
-.search input {
+.searchbox input {
     flex: 1;
-
-    background: transparent;
-    border: none;
+    height: 50px;
+    border: 0;
     outline: none;
-
+    padding: 0 17px;
+    border-radius: 12px 0 0 12px;
+    background: #160c20;
     color: white;
-
-    padding-left: 14px;
-
     font-size: 16px;
 }
 
-/* =========================
-   QUICK LINKS
-========================= */
-
-.quick {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    flex-wrap: wrap;
-}
-
-.quick button {
-    padding: 11px 18px;
-
-    border-radius: 12px;
-
-    border: 1px solid #30303a;
-
-    background: #191920;
-
-    color: #ccc;
-
-    cursor: pointer;
-
-    transition: .2s;
-}
-
-.quick button:hover {
-    transform: translateY(-3px);
-    background: #292630;
+.searchbox button {
+    width: 110px;
+    border: 0;
+    border-radius: 0 12px 12px 0;
+    background: #a855f7;
     color: white;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-/* =========================
-   GAMES
-========================= */
-
-.games-section {
-    max-width: 1200px;
-    margin: 100px auto 0;
+.searchbox button:hover {
+    background: #c084fc;
 }
 
+/* SECTION */
 .section-title {
     display: flex;
     justify-content: space-between;
     align-items: center;
-
-    margin-bottom: 22px;
+    margin-bottom: 18px;
 }
 
 .section-title h2 {
-    font-size: 26px;
+    font-size: 25px;
 }
 
-.section-title span {
-    color: #8f8f99;
-    font-size: 13px;
-}
-
+/* GAMES */
 .games {
     display: grid;
-
-    grid-template-columns:
-        repeat(auto-fill,minmax(190px,1fr));
-
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
     gap: 18px;
 }
 
 .game {
+    background: #160d20;
+    border: 1px solid #2e1940;
+    border-radius: 18px;
     overflow: hidden;
-
-    background: #15151c;
-
-    border: 1px solid #292933;
-
-    border-radius: 17px;
-
-    cursor: pointer;
-
-    transition: .25s;
+    transition: .2s;
 }
 
 .game:hover {
-    transform: translateY(-7px);
-
-    border-color: #7550a8;
-
-    box-shadow:
-        0 20px 50px rgba(0,0,0,.4);
+    transform: translateY(-5px);
+    border-color: #9149c7;
+    box-shadow: 0 15px 35px rgba(168, 85, 247, .15);
 }
 
 .game-image {
-    height: 135px;
-
+    height: 130px;
+    background: linear-gradient(135deg, #57227d, #a855f7);
     display: flex;
     align-items: center;
     justify-content: center;
-
-    font-size: 58px;
-}
-
-.g1 {
-    background: linear-gradient(135deg,#7c3aed,#ec4899);
-}
-
-.g2 {
-    background: linear-gradient(135deg,#0891b2,#2563eb);
-}
-
-.g3 {
-    background: linear-gradient(135deg,#ea580c,#facc15);
-}
-
-.g4 {
-    background: linear-gradient(135deg,#059669,#22c55e);
-}
-
-.g5 {
-    background: linear-gradient(135deg,#db2777,#7c3aed);
-}
-
-.g6 {
-    background: linear-gradient(135deg,#0284c7,#14b8a6);
+    font-size: 48px;
 }
 
 .game-info {
@@ -561,37 +237,115 @@ main {
 }
 
 .game-info h3 {
-    font-size: 15px;
+    margin-bottom: 6px;
 }
 
 .game-info p {
-    color: #777;
-    font-size: 12px;
-    margin-top: 5px;
+    color: #a998b5;
+    font-size: 13px;
+    margin-bottom: 13px;
 }
 
-/* =========================
-   SETTINGS PANEL
-========================= */
+.game-buttons {
+    display: flex;
+    gap: 7px;
+}
 
+.play {
+    flex: 1;
+    border: 0;
+    background: #8b3fc2;
+    color: white;
+    padding: 10px;
+    border-radius: 9px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.play:hover {
+    background: #a855f7;
+}
+
+.fav {
+    width: 42px;
+    border: 0;
+    background: #281536;
+    color: white;
+    border-radius: 9px;
+    cursor: pointer;
+}
+
+.fav:hover {
+    background: #43225b;
+}
+
+/* PAGES */
+.page {
+    display: none;
+}
+
+.page.active {
+    display: block;
+}
+
+/* MODAL */
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.85);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.game-window {
+    width: min(1200px, 96vw);
+    height: min(750px, 90vh);
+    background: #09050d;
+    border: 1px solid #6b3294;
+    border-radius: 18px;
+    overflow: hidden;
+    position: relative;
+}
+
+.game-window iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.close-game {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 5;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    border-radius: 10px;
+    background: rgba(0,0,0,.7);
+    color: white;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+/* SETTINGS */
 .settings {
     position: fixed;
-
-    right: -360px;
-    top: 120px;
-    bottom: 0;
-
-    width: 350px;
-
-    background: rgba(20,20,27,.97);
-    backdrop-filter: blur(25px);
-
-    border-left: 1px solid #30303a;
-
-    padding: 30px;
-
-    z-index: 50;
-
+    right: -340px;
+    top: 0;
+    width: 340px;
+    height: 100vh;
+    background: #150b1e;
+    border-left: 1px solid #3b2050;
+    z-index: 1100;
+    padding: 25px;
     transition: .3s;
 }
 
@@ -600,175 +354,76 @@ main {
 }
 
 .settings h2 {
-    margin-bottom: 25px;
+    margin-bottom: 20px;
 }
 
-.setting {
-    padding: 18px 0;
-
-    border-bottom: 1px solid #292933;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.setting-row {
+    background: #21112d;
+    padding: 15px;
+    border-radius: 12px;
+    margin-bottom: 10px;
 }
 
-.setting p {
-    color: #999;
-    font-size: 12px;
-    margin-top: 4px;
-}
-
-.toggle {
-    width: 45px;
-    height: 25px;
-
-    border-radius: 20px;
-
-    background: #333;
-
+.setting-row button {
+    margin-top: 10px;
+    border: 0;
+    background: #8b3fc2;
+    color: white;
+    padding: 9px 14px;
+    border-radius: 8px;
     cursor: pointer;
 }
 
-.toggle.on {
-    background: #8b5cf6;
+/* SEARCH RESULTS */
+.search-results {
+    margin-top: 25px;
 }
 
-.toggle::after {
-    content: "";
-
+.result {
     display: block;
-
-    width: 19px;
-    height: 19px;
-
-    background: white;
-
-    border-radius: 50%;
-
-    margin: 3px;
-
-    transition: .2s;
+    background: #170d21;
+    border: 1px solid #321b42;
+    padding: 17px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    color: white;
+    text-decoration: none;
 }
 
-.toggle.on::after {
-    transform: translateX(20px);
+.result:hover {
+    border-color: #a855f7;
 }
 
-/* =========================
-   GAME MODAL
-========================= */
-
-.modal {
-    position: fixed;
-
-    inset: 0;
-
-    background: rgba(0,0,0,.75);
-
-    backdrop-filter: blur(10px);
-
-    display: none;
-
-    align-items: center;
-    justify-content: center;
-
-    z-index: 100;
-}
-
-.modal.show {
-    display: flex;
-}
-
-.modal-box {
-    width: min(900px,90%);
-
-    height: 70%;
-
-    background: #15151c;
-
-    border: 1px solid #383842;
-
-    border-radius: 20px;
-
-    overflow: hidden;
-
-    box-shadow: 0 30px 100px rgba(0,0,0,.7);
-}
-
-.modal-top {
-    height: 55px;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 18px;
-
-    border-bottom: 1px solid #292933;
-}
-
-.modal-top h3 {
-    flex: 1;
-}
-
-.modal-close {
-    cursor: pointer;
-    font-size: 22px;
-    color: #999;
-}
-
-.game-screen {
-    height: calc(100% - 55px);
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    background:
-        radial-gradient(circle,#252535,#0d0d12);
-}
-
-.game-screen p {
-    color: #777;
-}
-
-/* =========================
-   RESPONSIVE
-========================= */
-
-@media(max-width:700px) {
-
-    .tab {
-        min-width: 160px;
-    }
-
+/* MOBILE */
+@media(max-width: 750px) {
     .sidebar {
-        width: 58px;
+        width: 65px;
+        padding: 10px 6px;
     }
 
-    .side-btn {
-        width: 42px;
-        height: 42px;
+    .sidebtn {
+        text-align: center;
+        font-size: 0;
     }
 
-    main {
-        left: 58px;
+    .sidebtn::first-letter {
+        font-size: 20px;
     }
 
-    .home {
-        padding: 40px 5%;
+    .content {
+        padding: 18px;
+    }
+
+    .hero {
+        padding: 25px;
     }
 
     .hero h1 {
-        letter-spacing: -4px;
+        font-size: 30px;
     }
 
-    .games {
-        grid-template-columns: repeat(2,1fr);
-    }
-
-    .game-image {
-        height: 110px;
+    .address {
+        display: none;
     }
 }
 </style>
@@ -776,411 +431,775 @@ main {
 
 <body>
 
-<div class="background">
-    <div class="blob one"></div>
-    <div class="blob two"></div>
-    <div class="blob three"></div>
-</div>
+<!-- TOP -->
+<div class="topbar">
+    <div class="logo">🍔 SteaKOS</div>
 
-
-<!-- TABS -->
-<div class="browser">
-
-    <div class="tabs">
-
-        <div class="tab active">
-
-            <div class="favicon"></div>
-
-            <div class="tab-title">
-                New Tab
-            </div>
-
-            <div class="close">
-                ×
-            </div>
-
-        </div>
-
-        <div class="newtab">
-            +
-        </div>
-
+    <div class="tab active" onclick="goHome()">
+        🏠 Home
     </div>
 
+    <div class="tab" onclick="showGames()">
+        🎮 Games
+    </div>
 </div>
-
 
 <!-- TOOLBAR -->
 <div class="toolbar">
 
-    <div class="tool" onclick="history.back()">‹</div>
+    <button class="toolbtn" onclick="goBack()" title="Back">←</button>
+    <button class="toolbtn" onclick="goForward()" title="Forward">→</button>
+    <button class="toolbtn" onclick="reloadPage()" title="Reload">↻</button>
 
-    <div class="tool" onclick="history.forward()">›</div>
+    <input
+        id="address"
+        class="address"
+        placeholder="Search or enter an address..."
+        onkeydown="addressKey(event)"
+    >
 
-    <div class="tool" onclick="location.reload()">↻</div>
-
-    <div class="address">
-
-        🔒
-
-        <input
-            id="url"
-            placeholder="Search or enter a URL"
-        >
-
-    </div>
-
-    <div class="tool" onclick="toggleSettings()">
-        ⚙
-    </div>
-
-    <div class="tool" onclick="fullscreen()">
-        ⛶
-    </div>
-
+    <button class="toolbtn" onclick="searchFromAddress()" title="Search">🔍</button>
+    <button class="toolbtn" onclick="toggleSettings()" title="Settings">⚙️</button>
+    <button class="toolbtn" onclick="fullscreen()" title="Fullscreen">⛶</button>
 </div>
 
+
+<div class="layout">
 
 <!-- SIDEBAR -->
-<div class="sidebar">
+<aside class="sidebar">
 
-    <div class="side-btn active" title="Home">
-        🏠
-    </div>
+    <button class="sidebtn active" onclick="goHome()">
+        🏠 Home
+    </button>
 
-    <div class="side-btn" title="Games">
-        🎮
-    </div>
+    <button class="sidebtn" onclick="showGames()">
+        🎮 Games
+    </button>
 
-    <div class="side-btn" title="Favorites">
-        ⭐
-    </div>
+    <button class="sidebtn" onclick="showFavorites()">
+        ⭐ Favorites
+    </button>
 
-    <div class="side-btn" title="History">
-        🕘
-    </div>
+    <button class="sidebtn" onclick="showHistory()">
+        🕘 History
+    </button>
 
-    <div class="side-btn side-bottom"
-         onclick="toggleSettings()"
-         title="Settings">
-        ⚙️
-    </div>
+    <button class="sidebtn" onclick="toggleSettings()">
+        ⚙️ Settings
+    </button>
 
-</div>
+</aside>
 
 
-<!-- MAIN -->
-<main>
+<!-- CONTENT -->
+<main class="content">
 
-<div class="home">
+<!-- HOME PAGE -->
+<section id="homePage" class="page active">
 
-    <section class="hero">
+    <div class="hero">
 
-        <div class="badge">
-            ✦ YOUR PERSONAL GAME HUB
-        </div>
-
-        <h1>
-            Welcome to
-            <span class="gradient">Steak</span>
-        </h1>
+        <h1>Welcome to SteaKOS 🍔</h1>
 
         <p>
-            Search the web, launch games, and explore your own space.
+            Games, search, and your web tools in one place.
         </p>
 
-
-        <div class="search">
-
-            <span>⌕</span>
+        <div class="searchbox">
 
             <input
-                id="search"
-                placeholder="Search or enter a URL..."
+                id="mainSearch"
+                placeholder="Search the web..."
+                onkeydown="mainSearchKey(event)"
             >
 
-        </div>
-
-
-        <div class="quick">
-
-            <button onclick="searchWeb()">
-                🔎 Search
-            </button>
-
-            <button onclick="scrollGames()">
-                🎮 Games
-            </button>
-
-            <button onclick="toggleSettings()">
-                ⚙ Settings
+            <button onclick="webSearch()">
+                Search
             </button>
 
         </div>
 
-    </section>
+    </div>
 
 
-    <!-- GAMES -->
+    <div class="section-title">
+        <h2>🔥 Featured Games</h2>
 
-    <section class="games-section" id="games">
-
-        <div class="section-title">
-
-            <h2>🔥 Featured Games</h2>
-
-            <span>6 games</span>
-
-        </div>
+        <button class="play" onclick="showGames()">
+            View All
+        </button>
+    </div>
 
 
-        <div class="games">
+    <div class="games">
 
-            <div class="game"
-                 onclick="openGame('Action Game')">
+        <!-- BASKET RANDOM -->
+        <div class="game">
 
-                <div class="game-image g1">
-                    ⚔️
-                </div>
-
-                <div class="game-info">
-                    <h3>Action Game</h3>
-                    <p>Action • Arcade</p>
-                </div>
-
+            <div class="game-image">
+                🏀
             </div>
 
+            <div class="game-info">
 
-            <div class="game"
-                 onclick="openGame('Racing')">
+                <h3>Basket Random</h3>
 
-                <div class="game-image g2">
-                    🏎️
-                </div>
+                <p>Crazy physics basketball.</p>
 
-                <div class="game-info">
-                    <h3>Racing</h3>
-                    <p>Racing • Driving</p>
-                </div>
+                <div class="game-buttons">
 
-            </div>
+                    <button
+                        class="play"
+                        onclick="openGame('games/basket-random/index.html', 'Basket Random')">
+                        Play
+                    </button>
 
+                    <button
+                        class="fav"
+                        onclick="addFavorite('Basket Random')">
+                        ⭐
+                    </button>
 
-            <div class="game"
-                 onclick="openGame('Space')">
-
-                <div class="game-image g3">
-                    🚀
-                </div>
-
-                <div class="game-info">
-                    <h3>Space</h3>
-                    <p>Arcade • Space</p>
-                </div>
-
-            </div>
-
-
-            <div class="game"
-                 onclick="openGame('Blocks')">
-
-                <div class="game-image g4">
-                    🧱
-                </div>
-
-                <div class="game-info">
-                    <h3>Blocks</h3>
-                    <p>Adventure</p>
-                </div>
-
-            </div>
-
-
-            <div class="game"
-                 onclick="openGame('Zombie')">
-
-                <div class="game-image g5">
-                    🧟
-                </div>
-
-                <div class="game-info">
-                    <h3>Zombie</h3>
-                    <p>Action • Survival</p>
-                </div>
-
-            </div>
-
-
-            <div class="game"
-                 onclick="openGame('Puzzle')">
-
-                <div class="game-image g6">
-                    🧩
-                </div>
-
-                <div class="game-info">
-                    <h3>Puzzle</h3>
-                    <p>Casual • Puzzle</p>
                 </div>
 
             </div>
 
         </div>
 
-    </section>
 
-</div>
+        <!-- PLACEHOLDER -->
+        <div class="game">
+
+            <div class="game-image">
+                🚀
+            </div>
+
+            <div class="game-info">
+
+                <h3>Space Game</h3>
+
+                <p>Coming soon.</p>
+
+                <div class="game-buttons">
+
+                    <button class="play" onclick="comingSoon()">
+                        Play
+                    </button>
+
+                    <button class="fav" onclick="addFavorite('Space Game')">
+                        ⭐
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="game">
+
+            <div class="game-image">
+                🏎️
+            </div>
+
+            <div class="game-info">
+
+                <h3>Racing</h3>
+
+                <p>Coming soon.</p>
+
+                <div class="game-buttons">
+
+                    <button class="play" onclick="comingSoon()">
+                        Play
+                    </button>
+
+                    <button class="fav" onclick="addFavorite('Racing')">
+                        ⭐
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="game">
+
+            <div class="game-image">
+                🧱
+            </div>
+
+            <div class="game-info">
+
+                <h3>Block Game</h3>
+
+                <p>Coming soon.</p>
+
+                <div class="game-buttons">
+
+                    <button class="play" onclick="comingSoon()">
+                        Play
+                    </button>
+
+                    <button class="fav" onclick="addFavorite('Block Game')">
+                        ⭐
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- GAMES PAGE -->
+<section id="gamesPage" class="page">
+
+    <div class="section-title">
+        <h2>🎮 Games</h2>
+    </div>
+
+    <div class="games">
+
+        <div class="game">
+
+            <div class="game-image">🏀</div>
+
+            <div class="game-info">
+
+                <h3>Basket Random</h3>
+
+                <p>Crazy basketball game.</p>
+
+                <div class="game-buttons">
+
+                    <button
+                        class="play"
+                        onclick="openGame('games/basket-random/index.html', 'Basket Random')">
+                        Play
+                    </button>
+
+                    <button
+                        class="fav"
+                        onclick="addFavorite('Basket Random')">
+                        ⭐
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FAVORITES PAGE -->
+<section id="favoritesPage" class="page">
+
+    <div class="section-title">
+        <h2>⭐ Favorites</h2>
+    </div>
+
+    <div id="favoriteList"></div>
+
+</section>
+
+
+<!-- HISTORY PAGE -->
+<section id="historyPage" class="page">
+
+    <div class="section-title">
+        <h2>🕘 History</h2>
+    </div>
+
+    <div id="historyList"></div>
+
+</section>
+
+
+<!-- SEARCH PAGE -->
+<section id="searchPage" class="page">
+
+    <h2>🔎 Search Results</h2>
+
+    <div id="searchResults" class="search-results"></div>
+
+</section>
 
 </main>
-
-
-<!-- SETTINGS -->
-
-<div class="settings" id="settings">
-
-    <h2>Settings</h2>
-
-    <div class="setting">
-
-        <div>
-            <b>Animations</b>
-            <p>Animated background effects</p>
-        </div>
-
-        <div class="toggle on"
-             onclick="this.classList.toggle('on')">
-        </div>
-
-    </div>
-
-
-    <div class="setting">
-
-        <div>
-            <b>Dark Mode</b>
-            <p>Use the dark interface</p>
-        </div>
-
-        <div class="toggle on"
-             onclick="this.classList.toggle('on')">
-        </div>
-
-    </div>
-
-
-    <div class="setting">
-
-        <div>
-            <b>Blur Effects</b>
-            <p>Glass-style panels</p>
-        </div>
-
-        <div class="toggle on"
-             onclick="this.classList.toggle('on')">
-        </div>
-
-    </div>
-
 </div>
 
 
 <!-- GAME MODAL -->
+<div id="gameModal" class="modal">
 
-<div class="modal" id="modal">
+    <div class="game-window">
 
-    <div class="modal-box">
+        <button class="close-game" onclick="closeGame()">
+            ✕
+        </button>
 
-        <div class="modal-top">
-
-            <h3 id="gameTitle">
-                Game
-            </h3>
-
-            <div
-                class="modal-close"
-                onclick="closeGame()">
-                ×
-            </div>
-
-        </div>
-
-        <div class="game-screen">
-
-            <p>
-                Your game will load here 🎮
-            </p>
-
-        </div>
+        <iframe
+            id="gameFrame"
+            allowfullscreen>
+        </iframe>
 
     </div>
+
+</div>
+
+
+<!-- SETTINGS -->
+<div id="settings" class="settings">
+
+    <h2>⚙️ Settings</h2>
+
+    <div class="setting-row">
+
+        <b>Theme</b>
+
+        <br>
+
+        <button onclick="alert('Purple theme is already enabled!')">
+            Purple
+        </button>
+
+    </div>
+
+    <div class="setting-row">
+
+        <b>Search Engine</b>
+
+        <p style="margin-top:8px;color:#aaa;">
+            Searches use DuckDuckGo.
+        </p>
+
+    </div>
+
+    <div class="setting-row">
+
+        <b>About</b>
+
+        <p style="margin-top:8px;color:#aaa;">
+            SteaKOS Gaming
+        </p>
+
+    </div>
+
+    <button
+        class="play"
+        onclick="toggleSettings()"
+        style="margin-top:10px;">
+        Close
+    </button>
 
 </div>
 
 
 <script>
 
-/* SEARCH */
+/* -------------------------
+   PAGE SYSTEM
+------------------------- */
 
-const search = document.getElementById("search");
+function hidePages() {
 
-search.addEventListener("keydown", function(e) {
+    document.querySelectorAll(".page").forEach(page => {
+        page.classList.remove("active");
+    });
 
-    if(e.key === "Enter") {
-        searchWeb();
+}
+
+
+function goHome() {
+
+    hidePages();
+
+    document.getElementById("homePage").classList.add("active");
+
+}
+
+
+function showGames() {
+
+    hidePages();
+
+    document.getElementById("gamesPage").classList.add("active");
+
+}
+
+
+function showFavorites() {
+
+    hidePages();
+
+    document.getElementById("favoritesPage").classList.add("active");
+
+    loadFavorites();
+
+}
+
+
+function showHistory() {
+
+    hidePages();
+
+    document.getElementById("historyPage").classList.add("active");
+
+    loadHistory();
+
+}
+
+
+/* -------------------------
+   GAME SYSTEM
+------------------------- */
+
+function openGame(url, name) {
+
+    document.getElementById("gameFrame").src = url;
+
+    document.getElementById("gameModal").classList.add("show");
+
+    addHistory(name);
+
+}
+
+
+function closeGame() {
+
+    document.getElementById("gameModal").classList.remove("show");
+
+    document.getElementById("gameFrame").src = "";
+
+}
+
+
+/* ESC closes game */
+document.addEventListener("keydown", function(event) {
+
+    if (event.key === "Escape") {
+
+        closeGame();
+
+        document.getElementById("settings").classList.remove("open");
+
     }
 
 });
 
 
-function searchWeb() {
+/* -------------------------
+   FAVORITES
+------------------------- */
 
-    let value = search.value.trim();
+function addFavorite(name) {
 
-    if(!value) return;
+    let favorites =
+        JSON.parse(localStorage.getItem("favorites") || "[]");
 
-    if(
-        value.startsWith("http://") ||
-        value.startsWith("https://")
-    ) {
+    if (!favorites.includes(name)) {
 
-        location.href = value;
+        favorites.push(name);
+
+        localStorage.setItem(
+            "favorites",
+            JSON.stringify(favorites)
+        );
+
+        alert(name + " added to favorites!");
 
     } else {
 
-        location.href =
-        "https://www.google.com/search?q=" +
-        encodeURIComponent(value);
+        alert(name + " is already in favorites!");
 
     }
 
 }
 
 
-/* URL BAR */
+function loadFavorites() {
 
-const url = document.getElementById("url");
+    let box = document.getElementById("favoriteList");
 
-url.addEventListener("keydown", function(e) {
+    let favorites =
+        JSON.parse(localStorage.getItem("favorites") || "[]");
 
-    if(e.key === "Enter") {
+    box.innerHTML = "";
 
-        let value = url.value.trim();
+    if (favorites.length === 0) {
 
-        if(!value) return;
+        box.innerHTML =
+            "<p style='color:#aaa;'>No favorites yet.</p>";
 
-        if(!value.includes("://")) {
-            value = "https://" + value;
-        }
-
-        location.href = value;
+        return;
 
     }
 
-});
+    favorites.forEach(name => {
+
+        let div = document.createElement("div");
+
+        div.className = "result";
+
+        div.innerHTML =
+            "⭐ " + name;
+
+        if (name === "Basket Random") {
+
+            div.style.cursor = "pointer";
+
+            div.onclick = function() {
+
+                openGame(
+                    "games/basket-random/index.html",
+                    "Basket Random"
+                );
+
+            };
+
+        }
+
+        box.appendChild(div);
+
+    });
+
+}
 
 
-/* SETTINGS */
+/* -------------------------
+   HISTORY
+------------------------- */
+
+function addHistory(name) {
+
+    let history =
+        JSON.parse(localStorage.getItem("history") || "[]");
+
+    history.unshift({
+        name: name,
+        time: new Date().toLocaleString()
+    });
+
+    history = history.slice(0, 30);
+
+    localStorage.setItem(
+        "history",
+        JSON.stringify(history)
+    );
+
+}
+
+
+function loadHistory() {
+
+    let box = document.getElementById("historyList");
+
+    let history =
+        JSON.parse(localStorage.getItem("history") || "[]");
+
+    box.innerHTML = "";
+
+    if (history.length === 0) {
+
+        box.innerHTML =
+            "<p style='color:#aaa;'>No history yet.</p>";
+
+        return;
+
+    }
+
+    history.forEach(item => {
+
+        let div = document.createElement("div");
+
+        div.className = "result";
+
+        div.innerHTML =
+            "🕘 <b>" +
+            item.name +
+            "</b><br><small>" +
+            item.time +
+            "</small>";
+
+        box.appendChild(div);
+
+    });
+
+}
+
+
+/* -------------------------
+   SEARCH
+------------------------- */
+
+function webSearch() {
+
+    let query =
+        document.getElementById("mainSearch").value.trim();
+
+    if (!query) {
+
+        alert("Type something to search!");
+
+        return;
+
+    }
+
+    performSearch(query);
+
+}
+
+
+function mainSearchKey(event) {
+
+    if (event.key === "Enter") {
+
+        webSearch();
+
+    }
+
+}
+
+
+function performSearch(query) {
+
+    hidePages();
+
+    document.getElementById("searchPage").classList.add("active");
+
+    let results =
+        document.getElementById("searchResults");
+
+    let encoded =
+        encodeURIComponent(query);
+
+    results.innerHTML = `
+
+        <a class="result"
+           href="https://duckduckgo.com/?q=${encoded}"
+           target="_blank">
+
+            🔎 Search DuckDuckGo for
+            <b>${escapeHTML(query)}</b>
+
+            <br>
+            <small>Open search results ↗</small>
+
+        </a>
+
+        <a class="result"
+           href="https://www.google.com/search?q=${encoded}"
+           target="_blank">
+
+            🌐 Search Google for
+            <b>${escapeHTML(query)}</b>
+
+            <br>
+            <small>Open Google results ↗</small>
+
+        </a>
+
+    `;
+
+    addHistory("Search: " + query);
+
+}
+
+
+function escapeHTML(text) {
+
+    return text
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+
+}
+
+
+/* -------------------------
+   ADDRESS BAR
+------------------------- */
+
+function searchFromAddress() {
+
+    let value =
+        document.getElementById("address").value.trim();
+
+    if (!value) {
+
+        return;
+
+    }
+
+    if (
+        value.startsWith("http://") ||
+        value.startsWith("https://")
+    ) {
+
+        window.location.href = value;
+
+    } else {
+
+        performSearch(value);
+
+    }
+
+}
+
+
+function addressKey(event) {
+
+    if (event.key === "Enter") {
+
+        searchFromAddress();
+
+    }
+
+}
+
+
+/* -------------------------
+   BROWSER BUTTONS
+------------------------- */
+
+function goBack() {
+
+    window.history.back();
+
+}
+
+
+function goForward() {
+
+    window.history.forward();
+
+}
+
+
+function reloadPage() {
+
+    window.location.reload();
+
+}
+
+
+/* -------------------------
+   SETTINGS
+------------------------- */
 
 function toggleSettings() {
 
@@ -1191,48 +1210,18 @@ function toggleSettings() {
 }
 
 
-/* GAMES */
-
-function scrollGames() {
-
-    document
-        .getElementById("games")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
-}
-
-
-function openGame(name) {
-
-    document
-        .getElementById("gameTitle")
-        .textContent = name;
-
-    document
-        .getElementById("modal")
-        .classList.add("show");
-
-}
-
-
-function closeGame() {
-
-    document
-        .getElementById("modal")
-        .classList.remove("show");
-
-}
-
-
-/* FULLSCREEN */
+/* -------------------------
+   FULLSCREEN
+------------------------- */
 
 function fullscreen() {
 
-    if(!document.fullscreenElement) {
+    if (!document.fullscreenElement) {
 
-        document.documentElement.requestFullscreen();
+        document.documentElement.requestFullscreen()
+        .catch(() => {
+            alert("Fullscreen isn't available here.");
+        });
 
     } else {
 
@@ -1243,19 +1232,18 @@ function fullscreen() {
 }
 
 
-/* ESC CLOSE */
+/* -------------------------
+   OTHER
+------------------------- */
 
-document.addEventListener("keydown", function(e) {
+function comingSoon() {
 
-    if(e.key === "Escape") {
+    alert("This game hasn't been added yet!");
 
-        closeGame();
-
-    }
-
-});
+}
 
 </script>
 
 </body>
 </html>
+```
